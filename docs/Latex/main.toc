@@ -1,0 +1,16 @@
+\contentsline {section}{\numberline {1}مقدمه: معرفی پروژه و چالش‌های مجموعه داده (GTSRB)}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}بارگذاری داده‌ها ( Data Loading )}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}تقسیم‌بندی داده‌ها ( Train/Validation Split )}{3}{subsection.1.2}%
+\contentsline {section}{\numberline {2}فاز اول: شبکه عصبی پرسپترون چندلایه (MLP)}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}پیش‌پردازش و آماده‌سازی داده‌ها}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}معماری شبکه و تحلیل پارامترها}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}آموزش مدل و استراتژی‌های کنترلی (Callbacks)}{6}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}ارزیابی نهایی و تحلیل مهندسی نتایج}{7}{subsection.2.4}%
+\contentsline {section}{\numberline {3}فاز دوم: شبکه عصبی پیچشی (CNN)}{9}{section.3}%
+\contentsline {subsection}{\numberline {3.1}پیش‌پردازش داده‌ها برای CNN}{9}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}طراحی معماری شبکه پیچشی و تحلیل پارامترها}{9}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}آموزش مدل و بررسی منحنی‌های یادگیری}{11}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}ارزیابی نهایی و تحلیل عملکرد CNN}{12}{subsection.3.4}%
+\contentsline {section}{\numberline {4}فاز سوم: ارزیابی نهایی بر روی داده‌های آزمون ( Unseen Test Data ) و مقایسه مدل‌ها}{13}{section.4}%
+\contentsline {subsection}{\numberline {4.1}اسکریپت ارزیابی نهایی ( Test Script )}{13}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}مقایسه عملکرد و نتیجه‌گیری نهایی}{15}{subsection.4.2}%

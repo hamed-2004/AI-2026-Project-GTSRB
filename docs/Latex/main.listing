@@ -1,0 +1,50 @@
+# ==========================================
+# 1. Configuration & Smart Paths
+# ==========================================
+# Automatically detect the directory where this script is located
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+IMG_HEIGHT = 32
+IMG_WIDTH = 32
+
+# Create absolute paths based on the script's location
+TEST_CSV_PATH = os.path.join(BASE_DIR, 'Test.csv')
+MLP_MODEL_PATH = os.path.join(BASE_DIR, 'best_mlp.keras')
+CNN_MODEL_PATH = os.path.join(BASE_DIR, 'MyCNNModel.h5')
+
+# 1. Load the best saved models
+print("Loading models...")
+try:
+    mlp_model = load_model(MLP_MODEL_PATH)
+    cnn_model = load_model(CNN_MODEL_PATH)
+    print("Both MLP and CNN models loaded successfully!")
+except Exception as e:
+    print(f"\n[ERROR] Could not load models. Reason: {e}")
+    print(f"Please ensure both '{MLP_MODEL_PATH}' and '{CNN_MODEL_PATH}' exist.")
+    exit()
+
+
+
+# 2. Extract paths and labels from Test.csv
+test_df = pd.read_csv(os.path.join(dataset_path, 'Test.csv'))
+test_image_paths = [os.path.join(dataset_path, path) for path in test_df['Path']]
+test_labels = test_df['ClassId'].values
+
+# 3. Process test images (Load, Resize to 32x32, Normalize)
+X_test = []
+for path in test_image_paths:
+    img = cv2.imread(path)
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    img = cv2.resize(img, (IMG_SIZE, IMG_SIZE))
+    X_test.append(img)
+X_test = np.array(X_test) / 255.0
+
+# 4. One-Hot Encoding for labels
+y_test_oh = tf.keras.utils.to_categorical(test_labels, NUM_CLASSES)
+
+# 5. Evaluate CNN
+cnn_test_loss, cnn_test_acc = cnn_model.evaluate(X_test, y_test_oh, verbose=1)
+
+# 6. Evaluate MLP (Requires Flattening)
+X_test_flat = X_test.reshape(X_test.shape[0], -1)
+mlp_test_loss, mlp_test_acc = best_mlp.evaluate(X_test_flat, y_test_oh, verbose=1)
